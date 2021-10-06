@@ -11,41 +11,41 @@
 </p>
 
 <p align="center">
-  <a href="#basic-overview">Basic Overview</a> •
+  <a href="#overview">Overview</a> •
   <a href="#prerequisites">Prerequisites</a> •
   <a href="#support">Support</a> •
   <a href="#license">License</a>
 </p>
 
-## Basic Overview
+## Overview
 
 This project focuses on scraping the Pokemon data from [Pokemon Database](https://pokemondb.net/), performing exploratory data analysis to generate insights and visualize them with the help of Power BI.
 
 The repository directory structure is as follows:
 
-├───Analyzing-Pokemons
-│ ├───01_WEBSCRAPING
-│ ├───02_ETL
-│ └───06_RESOURCES
+├───Analyzing-Pokemons<br>
+│ ├───01_WEBSCRAPING<br>
+│ ├───02_ETL<br>
+│ └───06_RESOURCES<br>
 
 The type of content present in the directories is as follows:
 
-**01_WEBSCRAPING**
+**01_WEBSCRAPING**<br>
 This directory contains the python script to scrape data from the website along with flat file that has the scraped data.
 
-**02_ETL**
+**02_ETL**<br>
 This directory contains the ETL script that takes the scraped dataset as input, transforms it and exports an analysis-ready dataset into the _03_DATA_ directory.
 
-**03_DATA**
+**03_DATA**<br>
 This directory contains the data that can be directly used for exploratory data analysis and data visualization purposes.
 
-**04_ANALYSIS**
+**04_ANALYSIS**<br>
 This directory contains the python notebooks that analyzes the clean dataset to generate insights
 
-**05_DASHBOARD**
+**05_DASHBOARD**<br>
 This directory contains the python notebook with an embedded Power BI report that visualizes the data. The Power BI dashboard contains slicers, cross-filtering and other advance capabilities that end user can play with to visualize a specific facet of the data or, to get additional insights.
 
-**06_RESOURCES**
+**06_RESOURCES**<br>
 This directory contains images, icons, layouts, etc. that are used in this project
 
 ## Prerequisites
@@ -73,7 +73,9 @@ If you have any doubts, queries or, suggestions then, please connect with me in 
 
 [![Linkedin Badge][linkedinbadge]][linkedin] [![Twitter Badge](https://img.shields.io/badge/-@quantumudit-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/quantumudit)][twitter] [![Skype Badge](https://img.shields.io/badge/-quantumudit-00AFF0?style=flat&labelColor=00AFF0b&logo=skype&logoColor=white)][skype] [![YouTube Badge](https://img.shields.io/badge/-quantumdata-e74c3c?style=flat&labelColor=e74c3c&logo=youtube&logoColor=white)][youtube] [![Mail Badge](https://img.shields.io/badge/-quantumudit@gmail.com-c0392b?style=flat&labelColor=c0392b&logo=gmail&logoColor=white)][gmail]
 
-If you like my work then, you may support me at Patreon:<a href="https://www.patreon.com/quantumudit" target="_blank">
+If you like my work then, you may support me at Patreon:
+
+<a href="https://www.patreon.com/quantumudit" target="_blank">
 <img src="06_RESOURCES/become_a_patreon.png" alt="git" width="170" height="50"/>
 </a>
 
