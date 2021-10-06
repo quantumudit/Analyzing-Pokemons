@@ -2,48 +2,80 @@
 
 ---
 
-<h4 align="center">Catching & Analyzing Pokémons with <a href=[about_python]" target="_blank">Python</a> and <a href=[about_power_bi] target="_blank">Power BI</a></h4>
+<h4 align="center">Catching & Analyzing Pokémons with <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">Python</a> and <a href="https://en.wikipedia.org/wiki/Microsoft_Power_BI" target="_blank">Power BI</a></h4>
 
 <p align='center'>
 <img src='06_RESOURCES/built-with-love.svg'>
 <img src='06_RESOURCES/powered-by-coffee.svg'>
+<img src='06_RESOURCES/cc-nc-sa.svg'>
 </p>
 
 <p align="center">
   <a href="#basic-overview">Basic Overview</a> •
   <a href="#prerequisites">Prerequisites</a> •
-  <a href="#download">Download</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#settings">Settings</a> •
   <a href="#support">Support</a> •
   <a href="#license">License</a>
 </p>
 
 ## Basic Overview
 
-contains folder structure and key notes on the repository
+This project focuses on scraping the Pokemon data from [Pokemon Database](https://pokemondb.net/), performing exploratory data analysis to generate insights and visualize them with the help of Power BI.
+
+The repository directory structure is as follows:
+
+├───Analyzing-Pokemons
+│ ├───01_WEBSCRAPING
+│ ├───02_ETL
+│ └───06_RESOURCES
+
+The type of content present in the directories is as follows:
+
+**01_WEBSCRAPING**
+This directory contains the python script to scrape data from the website along with flat file that has the scraped data.
+
+**02_ETL**
+This directory contains the ETL script that takes the scraped dataset as input, transforms it and exports an analysis-ready dataset into the _03_DATA_ directory.
+
+**03_DATA**
+This directory contains the data that can be directly used for exploratory data analysis and data visualization purposes.
+
+**04_ANALYSIS**
+This directory contains the python notebooks that analyzes the clean dataset to generate insights
+
+**05_DASHBOARD**
+This directory contains the python notebook with an embedded Power BI report that visualizes the data. The Power BI dashboard contains slicers, cross-filtering and other advance capabilities that end user can play with to visualize a specific facet of the data or, to get additional insights.
+
+**06_RESOURCES**
+This directory contains images, icons, layouts, etc. that are used in this project
 
 ## Prerequisites
 
-installation and skills required to follow along with the projects
+The major skills that are required as prerequisite to fully understand this project are as follows:
 
-## Download
+- Basics of Python
+- Python libraries: Requests, BeautifulSoup4, Pandas, DateTime
+- Basics of Python Notebooks
+- Basics of Power BI
 
-Downloading anaconda distribution, visual studio code and kite
+In order to complete the project, I've used the following applications and libraries
 
-## Installation
+- Python
+- Python libraries mentioned in requirements.txt file
+- Jupyter Notebook
+- Visual Studio Code
+- Microsoft Power BI
 
-Installation of the downloaded softwares
-
-## Settings
-
-setting up virtual environments.
-utilizing requirements.txt files
-other settings and bug fixes (stackoverflow and other links)
+> The choice of applications & their installation might vary based on individual preferences & system settings.
 
 ## Support
 
-connection and social links for any issue resolution and donations link.
+If you have any doubts, queries or, suggestions then, please connect with me in any of the following platforms:
+
+[![Linkedin Badge][linkedinbadge]][linkedin] [![Twitter Badge](https://img.shields.io/badge/-@quantumudit-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/quantumudit)][twitter] [![Skype Badge](https://img.shields.io/badge/-quantumudit-00AFF0?style=flat&labelColor=00AFF0b&logo=skype&logoColor=white)][skype] [![YouTube Badge](https://img.shields.io/badge/-quantumdata-e74c3c?style=flat&labelColor=e74c3c&logo=youtube&logoColor=white)][youtube] [![Mail Badge](https://img.shields.io/badge/-quantumudit@gmail.com-c0392b?style=flat&labelColor=c0392b&logo=gmail&logoColor=white)][gmail]
+
+If you like my work then, you may support me at Patreon:<a href="https://www.patreon.com/quantumudit" target="_blank">
+<img src="06_RESOURCES/become_a_patreon.png" alt="git" width="170" height="50"/>
+</a>
 
 ## License
 
@@ -65,3 +97,21 @@ This license allows reusers to distribute, remix, adapt, and build upon the mate
 [by_nc_sa_license]: https://creativecommons.org/licenses/by-nc-sa/4.0/
 [about_python]: https://en.wikipedia.org/wiki/Python_(programming_language)
 [about_power_bi]: https://en.wikipedia.org/wiki/Microsoft_Power_BI
+[patreon_link]: 06_RESOURCES/become_a_patreon.png
+
+<!-- Profile Links -->
+
+[linkedin]: https://www.linkedin.com/in/uditkumarchatterjee/
+[twitter]: https://twitter.com/quantumudit
+[data.world]: https://data.world/dataman-udit
+[youtube]: https://www.youtube.com/channel/UCKS7gum4_d3zFOFgdL2uLdA
+[gmail]: mailto:quantumudit@gmail.com
+[skype]: skype:quantumudit?call
+
+<!-- Shields Profile Links -->
+
+[linkedinbadge]: https://img.shields.io/badge/-uditkumarchatterjee-0e76a8?style=flat&labelColor=0e76a8&logo=linkedin&logoColor=white
+[twitterbadge]: https://img.shields.io/badge/-@quantumudit-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/quantumudit
+[skypebadge]: https://img.shields.io/badge/-quantumudit-00AFF0?style=flat&labelColor=00AFF0b&logo=skype&logoColor=white
+[gmailbadge]: https://img.shields.io/badge/-quantumudit-c0392b?style=flat&labelColor=c0392b&logo=gmail&logoColor=white
+[youtubebadge]: https://img.shields.io/badge/-quantumdata-e74c3c?style=flat&labelColor=e74c3c&logo=youtube&logoColor=white
