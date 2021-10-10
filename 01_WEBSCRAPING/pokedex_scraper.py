@@ -3,8 +3,10 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
+import pyfiglet
 
 ROOT_URL = 'https://pokemondb.net/'
+SESSION = requests.Session()
 
 HEADERS = {
     "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52",
@@ -23,7 +25,7 @@ def extract_content(URL: str):
         The whole HTML table content for scraping
     """
     
-    response = ses.get(URL, headers=HEADERS)
+    response = SESSION.get(URL, headers=HEADERS)
     soup = BeautifulSoup(response.content, 'html.parser')
     full_table = soup.find('table', attrs = {'id':'pokedex'})
     return full_table.find('tbody').find_all('tr')
@@ -80,7 +82,7 @@ def scrape_content(content: str) -> None:
         all_pokemons.append(pokemon_dict)
     return
 
-def load_data():
+def load_data() -> None:
     """
     This function loads the scraped data into a CSV file
     """
@@ -91,11 +93,14 @@ def load_data():
 if __name__ == '__main__':
     
     URL = "https://pokemondb.net/pokedex/all"
-    ses = requests.Session()
     
+    scraper_title = "POKEMON CATCHER"
+    ascii_art_title = pyfiglet.figlet_format(scraper_title, font='small')
+        
     start_time = datetime.datetime.now()
     
     print('\n\n')
+    print(ascii_art_title)
     print('Catching Pokemons...')
     
     content = extract_content(URL)
