@@ -22,12 +22,13 @@ def extract_content(URL: str):
     Returns:
         The whole HTML table content for scraping
     """
+    
     response = ses.get(URL, headers=HEADERS)
     soup = BeautifulSoup(response.content, 'html.parser')
     full_table = soup.find('table', attrs = {'id':'pokedex'})
     return full_table.find('tbody').find_all('tr')
 
-def scrape_content(content: str):
+def scrape_content(content: str) -> None:
     """
     This function loops through each row of the content extracted from 'extract_content()' function, scrapes the required data and appends it to the 'all_pokemons' list
     Args:
@@ -35,6 +36,7 @@ def scrape_content(content: str):
     Returns:
         This function doesn't return anything but adds the data to the global list variable
     """
+    
     for pokemon in content:
         icon = pokemon.find('td', class_ = 'cell-num cell-fixed').find('span', class_='infocard-cell-img').find('span')['data-src']
         rank = pokemon.find('td', class_ = 'cell-num cell-fixed').find('span', class_ = 'infocard-cell-data').text
@@ -113,3 +115,4 @@ if __name__ == '__main__':
     load_data()
     
     print('Data Exported to CSV...')
+    print('Webscraping completed !!!')

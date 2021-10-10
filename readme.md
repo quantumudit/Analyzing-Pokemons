@@ -13,6 +13,7 @@
 <p align="center">
   <a href="#overview">Overview</a> •
   <a href="#prerequisites">Prerequisites</a> •
+  <a href="#demo">Demo</a> •
   <a href="#support">Support</a> •
   <a href="#license">License</a>
 </p>
@@ -30,22 +31,28 @@ The repository directory structure is as follows:
 
 The type of content present in the directories is as follows:
 
-**01_WEBSCRAPING**<br>
+**01_WEBSCRAPING**
+
 This directory contains the python script to scrape data from the website along with flat file that has the scraped data.
 
-**02_ETL**<br>
+**02_ETL**
+
 This directory contains the ETL script that takes the scraped dataset as input, transforms it and exports an analysis-ready dataset into the _03_DATA_ directory.
 
-**03_DATA**<br>
+**03_DATA**
+
 This directory contains the data that can be directly used for exploratory data analysis and data visualization purposes.
 
-**04_ANALYSIS**<br>
+**04_ANALYSIS**
+
 This directory contains the python notebooks that analyzes the clean dataset to generate insights
 
-**05_DASHBOARD**<br>
+**05_DASHBOARD**
+
 This directory contains the python notebook with an embedded Power BI report that visualizes the data. The Power BI dashboard contains slicers, cross-filtering and other advance capabilities that end user can play with to visualize a specific facet of the data or, to get additional insights.
 
-**06_RESOURCES**<br>
+**06_RESOURCES**
+
 This directory contains images, icons, layouts, etc. that are used in this project
 
 ## Prerequisites
@@ -66,6 +73,10 @@ In order to complete the project, I've used the following applications and libra
 - Microsoft Power BI
 
 > The choice of applications & their installation might vary based on individual preferences & system settings.
+
+## Demo
+
+It will contain the architecture and gif of code execution and report with explanation.
 
 ## Support
 
