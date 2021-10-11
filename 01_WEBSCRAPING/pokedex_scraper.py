@@ -16,13 +16,13 @@ HEADERS = {
 
 all_pokemons = []
 
-def extract_content(URL: str):
+def extract_content(URL: str) -> str:
     """
     This function takes the Pokedex URL and returns the content that has the required data for scraping
     Args:
         URL (str): The URL string
     Returns:
-        The whole HTML table content for scraping
+        str: The whole HTML table content for scraping
     """
     
     response = SESSION.get(URL, headers=HEADERS)
@@ -36,7 +36,7 @@ def scrape_content(content: str) -> None:
     Args:
         content (str): This is the HTML Table content extracted from 'extract_content()' function
     Returns:
-        This function doesn't return anything but adds the data to the global list variable
+        None: This function doesn't return anything but adds the data to the global list variable
     """
     
     for pokemon in content:
