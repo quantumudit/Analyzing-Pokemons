@@ -105,7 +105,7 @@ If you have any doubts, queries or, suggestions then, please connect with me in 
 If you like my work then, you may support me at Patreon:
 
 <a href="https://www.patreon.com/quantumudit" target="_blank">
-<img src="https://i.ibb.co/94bkJwp/become-a-patreon.png" alt="become-a-patreon" border="0 width="170" height="50"">
+<img src="https://i.ibb.co/94bkJwp/become-a-patreon.png" alt="become-a-patreon" border="0" width="170" height="50"">
 </a>
 
 ## License
