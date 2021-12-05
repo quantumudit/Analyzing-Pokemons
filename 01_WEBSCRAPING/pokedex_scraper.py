@@ -2,7 +2,7 @@ import requests
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import pandas as pd
-import datetime
+from datetime import datetime, timezone
 import pyfiglet
 
 ROOT_URL = 'https://pokemondb.net/'
@@ -38,6 +38,9 @@ def scrape_content(content: str) -> None:
     Returns:
         None: This function doesn't return anything but adds the data to the global list variable
     """
+    
+    utc_timezone = timezone.utc
+    current_utc_timestamp = datetime.now(utc_timezone).strftime('%d-%b-%Y %H:%M:%S')
     
     for pokemon in content:
         icon = pokemon.find('td', class_ = 'cell-num cell-fixed').find('span', class_='infocard-cell-img').find('span')['data-src']
@@ -76,7 +79,8 @@ def scrape_content(content: str) -> None:
             'special_defense': sp_defense,
             'speed': speed,
             'icon': icon,
-            'details_link': pokemon_details_link
+            'details_link': pokemon_details_link,
+            'last_updated_at_UTC': current_utc_timestamp
         }
         
         all_pokemons.append(pokemon_dict)
@@ -88,7 +92,8 @@ def load_data() -> None:
     """
     
     poke_df = pd.DataFrame(all_pokemons)
-    poke_df.to_csv('pokemons_data.csv', index=False)
+    poke_df.to_csv('pokemons_data.csv', encoding='utf-8', index=False)
+    return
 
 if __name__ == '__main__':
     
@@ -97,7 +102,7 @@ if __name__ == '__main__':
     scraper_title = "POKEMON CATCHER"
     ascii_art_title = pyfiglet.figlet_format(scraper_title, font='small')
         
-    start_time = datetime.datetime.now()
+    start_time = datetime.now()
     
     print('\n\n')
     print(ascii_art_title)
@@ -108,16 +113,16 @@ if __name__ == '__main__':
     
     print(f'Total Pokemon Caught: {len(all_pokemons)}')
     
-    end_time = datetime.datetime.now()
+    end_time = datetime.now()
     scraping_time = end_time - start_time
     
     print('\n')
-    print('Caught\'em all...')
-    print(f'Time spent on scraping:{scraping_time}')
+    print("Caught'em all...")
+    print(f'Time spent on scraping: {scraping_time}')
     print('\n')
     print('Loading data into CSV...')
     
     load_data()
     
     print('Data Exported to CSV...')
-    print('Webscraping completed !!!')
+    print('Webscraping Completed !!!')
