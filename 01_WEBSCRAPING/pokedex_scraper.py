@@ -92,7 +92,7 @@ def load_data() -> None:
     """
     
     poke_df = pd.DataFrame(all_pokemons)
-    poke_df.to_csv('pokemons_data.csv', encoding='utf-8', index=False)
+    poke_df.to_csv('pokemons_scraped_data.csv', encoding='utf-8', index=False)
     return
 
 if __name__ == '__main__':
