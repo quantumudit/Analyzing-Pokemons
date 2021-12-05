@@ -1,4 +1,4 @@
-POKEID,Rank,Type,Pokemon,Icon,Details Link,Metric,Values
+PokeID,Rank,Type,Pokemon,Icon,Details Link,Metric,Values
 P1000-1,1,Grass,Bulbasaur,https://img.pokemondb.net/sprites/sword-shield/icon/bulbasaur.png,https://pokemondb.net/pokedex/bulbasaur,Attack,114
 P1001-1,1,Poison,Bulbasaur,https://img.pokemondb.net/sprites/sword-shield/icon/bulbasaur.png,https://pokemondb.net/pokedex/bulbasaur,Attack,114
 P1002-2,2,Grass,Ivysaur,https://img.pokemondb.net/sprites/sword-shield/icon/ivysaur.png,https://pokemondb.net/pokedex/ivysaur,Attack,142

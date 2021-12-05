@@ -93,7 +93,7 @@ print('\n')
 
 print('Adding custom index column to the dataframe')
 
-custom_index_col = pd.RangeIndex(start=1000, stop=1000+len(pokedex_data), step=1, name='POKEID')
+custom_index_col = pd.RangeIndex(start=1000, stop=1000+len(pokedex_data), step=1, name='PokeID')
 
 pokedex_data.index = custom_index_col
 pokedex_data.index = 'P' + pokedex_data.index.astype('string') + '-' + pokedex_data["Rank"].astype('string')
@@ -108,7 +108,7 @@ print('\n')
 
 print('Exporting the dataframe to CSV file...')
 
-pokedex_data.to_csv('../03_DATA/pokedex_data.csv', encoding='utf-8', index_label='POKEID')
+pokedex_data.to_csv('../03_DATA/pokedex_data.csv', encoding='utf-8', index_label='PokeID')
 
 print('Data exported to CSV...')
 print('ETL Process completed !!!')
