@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "analyzing-pokemons"
+version = "0.1.0"
+description = "The project is about scraping the Pokémon data ana analyzing it"
+authors = ["Udit Kumar Chatterjee <quantumudit@gmail.com>"]
+license = "NC-SA"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+beautifulsoup4 = "^4.12.3"
+numpy = "^1.26.4"
+pandas = "^2.2.1"
+matplotlib = "^3.8.3"
+seaborn = "^0.13.2"
+pyarrow = "^15.0.0"
+pyyaml = "^6.0.1"
+python-box = "^7.1.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.0"
+pre-commit = "^3.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
