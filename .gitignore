@@ -13,6 +13,7 @@
 research/
 origin/
 logs/
+archive/
 
 # Power BI extensions
 *.pbix

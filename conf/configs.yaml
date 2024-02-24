@@ -1,10 +1,11 @@
-web_scraping:
+data_scraper:
+  root_url: https://pokemondb.net/
   data_url: https://pokemondb.net/pokedex/all
-  user_agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+  user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
   timeout: 100
-  download_status: True
+  clear_contents: True
   scraped_data_path: data/external/scraped_pokemons.csv
 
 data_preprocessing:
   scraped_data_path: data/external/scraped_pokemons.csv
-  processed_data_path: data/processed/ppkemons.csv
+  processed_data_path: data/processed/pokemons.csv

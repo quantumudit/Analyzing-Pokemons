@@ -5,16 +5,12 @@ and writing to CSV files. The functions are designed to handle exceptions and
 log relevant information for debugging purposes.
 """
 
-import json
-import zipfile
-from os import listdir, makedirs
-from os.path import dirname, normpath
-from typing import Any
+from csv import DictWriter
+from os import makedirs
+from os.path import normpath
 
-import joblib
 import yaml
 from box import Box
-from tabulate import tabulate
 
 from src.exception import CustomException
 from src.logger import logger
@@ -64,113 +60,41 @@ def create_directories(dir_paths: list, verbose=True) -> None:
             logger.info("created directory at: %s", path)
 
 
-def save_as_joblib(file_path: str, serialized_object: Any) -> None:
+def write_to_csv(csv_filepath: str, data: dict, verbose: bool = False) -> None:
     """
-    Save a serialized object using joblib.
+    This function writes a dictionary to a CSV file. If the file
+    does not exist, it will be created.
 
     Args:
-        file_path (str): The file path where the serialized object will be saved.
-        serialized_object (Any): The object to be serialized and saved.
+        csv_filepath (str): The path to the CSV file to which the data
+            should be written.
+        data (dict): The data to be written to the CSV file. The keys of the
+            dictionary are used as field names.
+        verbose (bool, optional): If True, the function will log the data
+            that was written to the CSV file. Defaults to False.
 
     Raises:
-        CustomException: If there is an error during the saving process.
+        CustomException: If there is an error while writing to the CSV file,
+        a CustomException will be raised with the original exception
+        as its argument.
     """
-    save_path = normpath(file_path)
-    makedirs(dirname(save_path), exist_ok=True)
     try:
-        joblib.dump(serialized_object, save_path)
-        logger.info("object saved at: %s", save_path)
-    except Exception as e:
-        logger.error(CustomException(e))
-        raise CustomException(e) from e
+        csv_path = normpath(csv_filepath)
 
+        # Write to the file (This will create the CSV file if not exists)
+        with open(csv_path, "a", newline="", encoding="utf-8") as cf:
+            writer = DictWriter(cf, fieldnames=data.keys())
 
-def load_joblib(file_path: str) -> joblib:
-    """
-    This function loads a joblib file from a specified file path.
+            # Write the headers (only for the first time)
+            if cf.tell() == 0:
+                writer.writeheader()
+                logger.info("CSV file: %s created successfully", csv_path)
 
-    Args:
-        file_path (str): The path to the joblib file to be loaded.
+            # Write the new data rows
+            writer.writerow(data)
 
-    Raises:
-        CustomException: If there is an error in loading the joblib file,
-        a custom exception is raised with the error message.
-
-    Returns:
-        joblib: The loaded joblib object
-    """
-    saved_path = normpath(file_path)
-    try:
-        joblib_object = joblib.load(saved_path)
-        logger.info("object loaded from: %s", saved_path)
-        return joblib_object
-    except Exception as e:
-        logger.error(CustomException(e))
-        raise CustomException(e) from e
-
-
-def save_as_json(file_path: str, data: dict) -> None:
-    """
-    This function saves a dictionary as a JSON file at the specified file path.
-
-    Args:
-        file_path (str): The path where the JSON file will be saved. If the directories
-        in the path do not exist, they will be created.
-        data (dict): The dictionary that will be saved as a JSON file.
-
-    Raises:
-        CustomException: If there is an error during the file writing process,
-        a CustomException will be raised with the original exception as its argument.
-    """
-    save_path = normpath(file_path)
-    makedirs(dirname(save_path), exist_ok=True)
-    try:
-        with open(save_path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=4)
-
-        logger.info("json file saved at: %s", save_path)
-    except Exception as e:
-        logger.error(CustomException(e))
-        raise CustomException(e) from e
-
-
-def dict_to_table(input_dict: dict, column_headers: list) -> str:
-    """
-    Convert a dictionary into a tabulated string.
-
-    Args:
-        input_dict (dict): The input dictionary to be converted into a table.
-        column_headers (list): List of column headers for the table.
-
-    Returns:
-        str: A tabulated representation of the dictionary as a string.
-    """
-
-    table_vw = tabulate(
-        input_dict.items(), headers=column_headers, tablefmt="pretty", stralign="left"
-    )
-
-    return table_vw
-
-
-def unzip_file(zipfile_path: str, unzip_dir: str) -> str:
-    """
-    Unzips a file to a specified directory.
-
-    Args:
-        zipfile_path (str): The path to the zip file.
-        unzip_dir (str): The directory where the files will be extracted.
-
-    Returns:
-        str: A list of the names of the extracted files.
-    """
-    zipfile_path = normpath(zipfile_path)
-    unzip_dir = normpath(unzip_dir)
-    try:
-        with zipfile.ZipFile(zipfile_path, "r") as zf:
-            zf.extractall(path=unzip_dir)
-        unzipped_files = listdir(unzip_dir)
-        return unzipped_files
+            if verbose:
+                logger.info("1 row added: %s", data)
     except Exception as e:
         logger.error(CustomException(e))
         raise CustomException(e) from e

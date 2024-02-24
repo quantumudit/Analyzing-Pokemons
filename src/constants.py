@@ -18,16 +18,19 @@ class PokemonInfo:
     """
     A dataclass for storing product information.
     Attributes:
-        title (str): The title of the product.
+        rank (str): The rank of the pokemon
     """
 
-    title: str
-    price: str
-    in_stocks: str
-    sku: str
-    category: str
-    description: str
-    product_image_link: str
-    additional_info: dict
-    product_link: str
+    rank: str
+    name: str
+    types: str
+    total_power: str
+    hit_points: str
+    attack: str
+    defense: str
+    special_attack: str
+    special_defense: str
+    speed: str
+    icon_url: str
+    details_url: str
     scrape_ts: str
