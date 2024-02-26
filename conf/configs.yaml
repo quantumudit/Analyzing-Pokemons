@@ -6,6 +6,6 @@ data_scraper:
   clear_contents: True
   scraped_data_path: data/external/scraped_pokemons.csv
 
-data_preprocessor:
+data_processor:
   scraped_data_path: data/external/scraped_pokemons.csv
-  processed_data_path: data/processed/pokemons.csv
+  database_path: data/database/pokemon_stats.db
