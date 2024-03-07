@@ -54,11 +54,13 @@ class PokemonScraper:
             dict: _description_
         """
 
-        # Get the mega name of the pokemon if exists
+        # Get the name of the pokemon (also mega/extra name info, if exists)
+        common_name = pokemon.find("a", class_="ent-name").text
         try:
-            name = pokemon.find("small", class_="text-muted").text
+            extra_name = pokemon.find("small", class_="text-muted").text
+            name = f"{common_name} ({extra_name})"
         except AttributeError:
-            name = pokemon.find("a", class_="ent-name").text
+            name = common_name
 
         # Partial details URL path of the pokemon
         partial_details_path = pokemon.find("a", class_="ent-name")["href"]
