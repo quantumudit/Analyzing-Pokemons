@@ -1,5 +1,19 @@
 """
-summary
+This module provides functionality to scrape Pokémon data from a specified URL and
+save it to a CSV file.
+
+The module includes the `PokemonScraper` class, which reads configuration settings
+from a YAML file, sends an HTTP request to a specified URL to retrieve Pokémon data,
+parses the HTML content using BeautifulSoup, and extracts relevant information about
+each Pokémon. The extracted data is then saved to a CSV file.
+
+Classes:
+    PokemonScraper: A class used to scrape Pokémon data from a specified URL and save
+    it to a CSV file.
+
+Functions:
+    extract_pokemon_info(): Extracts information about a Pokémon.
+    scrape_data(): Scrapes data from a specified URL and saves it to a CSV file.
 """
 
 import time
@@ -18,7 +32,32 @@ from src.utils.basic_utils import create_directories, read_yaml, write_to_csv
 
 
 class PokemonScraper:
-    """_summary_"""
+    """
+    A class used to scrape Pokémon data from a specified URL and save it to a CSV file.
+
+    This class reads configuration settings from a YAML file, sends an HTTP request to
+    a specified URL to retrieve Pokémon data, parses the HTML content using
+    BeautifulSoup, and extracts relevant information about each Pokémon. The extracted
+    data is then saved
+    to a CSV file.
+
+    Attributes:
+        configs (dict): Configuration settings read from the YAML file.
+        root_url (str): The root URL of the website to scrape data from.
+        data_url (str): The specific URL containing the Pokémon data.
+        user_agent (str): The user-agent string to be used in the HTTP request headers.
+        timeout (int): The timeout duration for the HTTP request.
+        clear_contents (bool): Flag to clear the existing output file contents or, not
+        scraped_data_path (str): The file path where the scraped data will be saved.
+        headers (dict): HTTP request headers.
+
+    Methods:
+        extract_pokemon_info(pokemon: bs4.element.Tag) -> dict:
+            Extracts information about a Pokémon from a BeautifulSoup Tag object.
+
+        scrape_data() -> None:
+            Scrapes data from a specified URL and saves it to a CSV file.
+    """
 
     def __init__(self):
         # Read the configuration file
@@ -45,13 +84,16 @@ class PokemonScraper:
         self.headers = {"user-agent": self.user_agent, "accept-language": "en-US"}
 
     def extract_pokemon_info(self, pokemon: bs4.element.Tag) -> dict:
-        """_summary_
+        """
+        Extracts information about a Pokémon from a BeautifulSoup Tag object.
 
         Args:
-            pokemon (bs4.element.Tag): _description_
+            pokemon (bs4.element.Tag): A BeautifulSoup Tag object containing the
+            HTML of a Pokémon entry.
 
         Returns:
-            dict: _description_
+            dict: A dictionary with the Pokémon's rank, name, types, stats, icon URL,
+            details URL, and scrape timestamp.
         """
 
         # Get the name of the pokemon (also mega/extra name info, if exists)
@@ -90,10 +132,11 @@ class PokemonScraper:
         return asdict(pokemon_stats)
 
     def scrape_data(self) -> None:
-        """_summary_
+        """
+        Scrapes data from a specified URL and saves it to a CSV file.
 
         Raises:
-            CustomException: _description_
+            CustomException: If an error occurs during the scraping process.
         """
         # create save directory if not exists
         create_directories([dirname(self.scraped_data_path)])
@@ -115,7 +158,7 @@ class PokemonScraper:
             start_time = time.time()
 
             # Start scraping product in loop
-            logger.info("Product scraping started")
+            logger.info("Scraping started")
 
             # Write scraped info into CSV file
             for idx, pokemon in enumerate(pokemon_entries):

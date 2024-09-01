@@ -8,7 +8,7 @@ from src.exception import CustomException
 from src.logger import logger
 
 
-class DataScrapingPipeline:
+class DataExtractionPipeline:
     """
     This class represents the data extraction pipeline.
     It includes methods for product link extraction and product info scraping.
@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
     try:
         logger.info(">>>>>> %s started <<<<<<", STAGE_NAME)
-        obj = DataScrapingPipeline()
+        obj = DataExtractionPipeline()
         obj.main()
         logger.info(">>>>>> %s completed <<<<<<\n\nx==========x", STAGE_NAME)
     except Exception as e:

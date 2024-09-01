@@ -8,4 +8,4 @@ data_scraper:
 
 data_processor:
   scraped_data_path: data/external/scraped_pokemons.csv
-  database_path: data/database/pokemon_stats.db
+  processed_data_path: data/processed/pokemons.csv

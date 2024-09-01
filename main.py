@@ -14,14 +14,14 @@ completion of each stage, as well as any exceptions that may occur.
 
 from src.exception import CustomException
 from src.logger import logger
-from src.pipelines.stage_01_data_scraping import DataScrapingPipeline
+from src.pipelines.stage_01_data_extraction import DataExtractionPipeline
 from src.pipelines.stage_02_data_processing import DataProcessingPipeline
 
 STAGE_NAME = "Web Scraping Stage"
 
 try:
     logger.info(">>>>>> %s started <<<<<<", STAGE_NAME)
-    obj = DataScrapingPipeline()
+    obj = DataExtractionPipeline()
     obj.main()
     logger.info(">>>>>> %s completed <<<<<<\n\nx==========x", STAGE_NAME)
 except Exception as e:
